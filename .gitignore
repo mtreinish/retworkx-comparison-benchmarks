@@ -1,0 +1,4 @@
+dimacs_9/
+*venv/
+__pycache__/
+*.py[cod]
