@@ -10,8 +10,6 @@ data and run the benchmarks for all the compared graph frameworks.
 
 TODO
 
-- add variant for other graph libraries
-- graphing results
 - Add benchmarks for additional algorithms (probably using different data sets)
 
 ## Hosted csv results
