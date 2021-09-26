@@ -6,13 +6,13 @@ pushd dimacs_9
 # Challenge benchmark
 wget http://www.dis.uniroma1.it/%7echallenge9/temp/USA-road-1.USA.gr.gz
 pushd distance
-wget https://users.diag.uniroma1.it/challenge9/data/USA-road-d/USA-road-d.USA.gr.gz
-wget https://users.diag.uniroma1.it/challenge9/data/USA-road-d/USA-road-d.NY.gr.gz
-wget https://users.diag.uniroma1.it/challenge9/data/rome/rome99.gr
+wget http://users.diag.uniroma1.it/challenge9/data/USA-road-d/USA-road-d.USA.gr.gz
+wget http://users.diag.uniroma1.it/challenge9/data/USA-road-d/USA-road-d.NY.gr.gz
+wget http://users.diag.uniroma1.it/challenge9/data/rome/rome99.gr
 popd
 pushd time
-wget https://users.diag.uniroma1.it/challenge9/data/USA-road-t/USA-road-t.USA.gr.gz
-wget https://users.diag.uniroma1.it/challenge9/data/USA-road-t/USA-road-t.NY.gr.gz
+wget http://users.diag.uniroma1.it/challenge9/data/USA-road-t/USA-road-t.USA.gr.gz
+wget http://users.diag.uniroma1.it/challenge9/data/USA-road-t/USA-road-t.NY.gr.gz
 popd
 popd
  Build venvs
@@ -41,5 +41,6 @@ done
 # No snap shortest path benchmarks since snap doesn't offer a weighted shortest
 # path function
 
-mkdir results
 mv *csv results/
+pushd results
+python ../graph_results.py
