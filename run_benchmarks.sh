@@ -22,8 +22,6 @@ virtualenv networkx_venv
 networkx_venv/bin/pip install -U networkx
 virtualenv igraph_venv
 igraph_venv/bin/pip install -U python-igraph networkx
-virtualenv snap_venv
-snap_venv/bin/pip install -U snap-stanford
 
 echo "Running retworkx benchmarks"
 for gr_file in dimacs_9/USA-road-1.USA.gr.gz dimacs_9/distance/USA-road-d.USA.gr.gz dimacs_9/distance/USA-road-d.NY.gr.gz dimacs_9/time/USA-road-t.USA.gr.gz dimacs_9/time/USA-road-t.NY.gr.gz dimacs_9/distance/rome99.gr; do
@@ -37,6 +35,11 @@ echo "Running igraph benchmarks"
 for gr_file in dimacs_9/USA-road-1.USA.gr.gz dimacs_9/distance/USA-road-d.USA.gr.gz dimacs_9/distance/USA-road-d.NY.gr.gz dimacs_9/time/USA-road-t.USA.gr.gz dimacs_9/time/USA-road-t.NY.gr.gz dimacs_9/distance/rome99.gr; do
     igraph_venv/bin/python igraph_bench/shortest_path.py $gr_file
 done
+echo "Running graph-tool benchmarks"
+for gr_file in dimacs_9/USA-road-1.USA.gr.gz dimacs_9/distance/USA-road-d.USA.gr.gz dimacs_9/distance/USA-road-d.NY.gr.gz dimacs_9/time/USA-road-t.USA.gr.gz dimacs_9/time/USA-road-t.NY.gr.gz dimacs_9/distance/rome99.gr; do
+    python graph_tool_bench/shortest_path.py $gr_file
+done
+
 
 # No snap shortest path benchmarks since snap doesn't offer a weighted shortest
 # path function

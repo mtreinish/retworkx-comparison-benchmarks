@@ -10,7 +10,8 @@ import csv
 import sys
 import time
 
-import networkx
+import graph_tool
+import graph_tool.topology
 
 import gr_parser
 
@@ -26,24 +27,28 @@ def main():
         graph = gr_parser.parse_gr_from_file(path)
         stop = time.time()
         creation.append(stop - start)
-    end_node = len(graph) - 1
+    print(graph.edge_properties)
+    edge_weights = graph.edge_properties["weights"]
+    end_node = graph.num_vertices() - 1
     print("staring single source")
     single_source_shortest_path = []
     for _ in range(5):
         start = time.time()
-        networkx.dijkstra_path_length(graph, 0, end_node)
+        graph_tool.topology.shortest_distance(
+            graph, source=0, target=end_node, weights=edge_weights
+        )
         stop = time.time()
         single_source_shortest_path.append(stop - start)
     all_pairs = []
-    if len(graph) < 100000:
+    if graph.num_vertices() < 100000:
         print("all pairs")
         for i in range(5):
             start = time.time()
-            dict(networkx.all_pairs_dijkstra_path_length(graph))
+            graph_tool.topology.shortest_distance(graph, weights=edge_weights)
             stop = time.time()
             all_pairs.append(stop - start)
     filename = ".".join(path.split("/")[-1].split(".")[0:2])
-    with open(f"networkx_{filename}.csv", "w") as csvfile:
+    with open(f"graph-tool_{filename}.csv", "w") as csvfile:
         csv_writer = csv.writer(csvfile)
         csv_writer.writerow(["Creation"] + creation)
         csv_writer.writerow(["Single Source"] + single_source_shortest_path)

@@ -20,14 +20,19 @@ MEM_SIZE = 1.26 * 10 ** 11
 
 def main():
     path = sys.argv[1]
-    graph = gr_parser.parse_gr_from_file(path)
+    creation = []
+    for _ in range(5):
+        start = time.time()
+        graph = gr_parser.parse_gr_from_file(path)
+        stop = time.time()
+        creation.append(stop - start)
     end_node = len(graph) - 1
     print("staring single source")
     single_source_shortest_path = []
     for _ in range(5):
         start = time.time()
         retworkx.digraph_dijkstra_shortest_path_lengths(
-            graph, 0, goal=end_node, edge_cost_fn=float
+            graph, 0, goal=end_node, edge_cost_fn=lambda x: x
         )
         stop = time.time()
         single_source_shortest_path.append(stop - start)
@@ -50,11 +55,10 @@ def main():
     filename = ".".join(path.split("/")[-1].split(".")[0:2])
     with open(f"retworkx_{filename}.csv", "w") as csvfile:
         csv_writer = csv.writer(csvfile)
+        csv_writer.writerow(["Creation"] + creation)
         csv_writer.writerow(["Single Source"] + single_source_shortest_path)
         if all_pairs:
             csv_writer.writerow(["All Pairs Shortest Path Length"] + all_pairs)
-        if distance_matrix:
-            csv_writer.writerow(["Distance Matrix"] + distance_matrix)
 
 
 if __name__ == "__main__":

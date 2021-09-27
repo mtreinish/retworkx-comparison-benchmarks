@@ -18,7 +18,12 @@ MEM_SIZE = 1.26 * 10 ** 11
 
 def main():
     path = sys.argv[1]
-    graph = gr_parser.parse_gr_from_file(path)
+    creation = []
+    for _ in range(5):
+        start = time.time()
+        graph = gr_parser.parse_gr_from_file(path)
+        stop = time.time()
+        creation.append(stop - start)
     end_node = graph.vcount() - 1
     print("staring single source")
     single_source_shortest_path = []
@@ -39,6 +44,7 @@ def main():
     filename = ".".join(path.split("/")[-1].split(".")[0:2])
     with open(f"igraph_{filename}.csv", "w") as csvfile:
         csv_writer = csv.writer(csvfile)
+        csv_writer.writerow(["Creation"] + creation)
         csv_writer.writerow(["Single Source"] + single_source_shortest_path)
         if all_pairs:
             csv_writer.writerow(["All Pairs Shortest Path Length"] + all_pairs)
