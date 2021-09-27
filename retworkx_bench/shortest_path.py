@@ -41,7 +41,7 @@ def main():
         print("all pairs")
         for i in range(5):
             start = time.time()
-            retworkx.digraph_all_pairs_dijkstra_shortest_paths(graph, float)
+            retworkx.digraph_all_pairs_dijkstra_path_lengths(graph, float)
             stop = time.time()
             all_pairs.append(stop - start)
     distance_matrix = []
