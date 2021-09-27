@@ -232,7 +232,7 @@ def all_pair_graph():
         with open(graph_tools_file) as csvfile:
             data_reader = csv.reader(csvfile)
             for row in data_reader:
-                if row[0] == "Single Source":
+                if row[0] == "All Pairs Shortest Path Length":
                     graph_tools_times.append(
                         statistics.mean([float(x) for x in row[1:]])
                     )
