@@ -37,8 +37,7 @@ def main():
         print("all pairs")
         for i in range(5):
             start = time.time()
-            for node in range(graph.vcount()):
-                graph.get_all_shortest_paths(node, weights="weight")
+            res = graph.shortest_paths(weights='weight')
             stop = time.time()
             all_pairs.append(stop - start)
     filename = ".".join(path.split("/")[-1].split(".")[0:2])
