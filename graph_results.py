@@ -4,7 +4,21 @@ import csv
 import statistics
 
 import matplotlib.pyplot as plt
-import seaborn as sns
+
+try:
+    import seaborn as sns
+    HAS_SNS = True
+except ImportError:
+    HAS_SNS = False
+    print("Skipping seaborn import (graphs will have different theme)")
+
+try:
+    import tikzplotlib
+    HAS_TIKZ = True
+except:
+    HAS_TIKZ = False
+    print("Skipping seaborn import (no TikZ output will be generated)")
+
 import numpy as np
 
 
@@ -53,7 +67,8 @@ def creation_time_graph():
                     )
     x = np.arange(len(single_source_shortest_files))
     width = 0.175
-    sns.set_theme()
+    if HAS_SNS:
+        sns.set_theme()
     fig, ax = plt.subplots()
     retworkx_rects = ax.bar(x - 3 * width / 2, retworkx_times, width, label="retworkx")
     networkx_rects = ax.bar(x - width / 2, networkx_times, width, label="NetworkX")
@@ -75,6 +90,9 @@ def creation_time_graph():
     ax.bar_label(graph_tools_rects, padding=3)
     fig.tight_layout()
     fig.savefig("creation.png")
+
+    if HAS_TIKZ:
+        tikzplotlib.save("creation.tex")
 
 
 def single_source_graph():
@@ -121,7 +139,8 @@ def single_source_graph():
                     )
     x = np.arange(len(single_source_shortest_files))
     width = 0.175
-    sns.set_theme()
+    if HAS_SNS:
+        sns.set_theme()
     fig, ax = plt.subplots()
     retworkx_rects = ax.bar(x - 3 * width / 2, retworkx_times, width, label="retworkx")
     networkx_rects = ax.bar(x - width / 2, networkx_times, width, label="NetworkX")
@@ -143,6 +162,9 @@ def single_source_graph():
     ax.bar_label(graph_tools_rects, padding=3)
     fig.tight_layout()
     fig.savefig("single_source_shortest_path.png")
+
+    if HAS_TIKZ:
+        tikzplotlib.save("single_source_shortest_path.tex")
 
 
 def single_source_graph_NY():
@@ -183,7 +205,8 @@ def single_source_graph_NY():
                     )
     x = np.arange(len(single_source_shortest_files))
     width = 0.2333
-    sns.set_theme()
+    if HAS_SNS:
+        sns.set_theme()
     fig, ax = plt.subplots()
     retworkx_rects = ax.bar(x - 3 * width / 2, retworkx_times, width, label="retworkx")
     networkx_rects = ax.bar(x - width / 2, networkx_times, width, label="NetworkX")
@@ -205,6 +228,9 @@ def single_source_graph_NY():
     ax.bar_label(graph_tools_rects, padding=3)
     fig.tight_layout()
     fig.savefig("single_source_shortest_path_2.png")
+
+    if HAS_TIKZ:
+        tikzplotlib.save("single_source_shortest_path_2.tex")
 
 
 def all_pair_graph():
@@ -243,7 +269,8 @@ def all_pair_graph():
                     )
     x = np.arange(len(all_pair_files))
     width = 0.2333
-    sns.set_theme()
+    if HAS_SNS:
+        sns.set_theme()
     fig, ax = plt.subplots()
     retworkx_rects = ax.bar(x - 3 * width / 2, retworkx_times, width, label="retworkx")
     networkx_rects = ax.bar(x - width / 2, networkx_times, width, label="NetworkX")
@@ -265,6 +292,9 @@ def all_pair_graph():
     ax.bar_label(graph_tools_rects, padding=3)
     fig.tight_layout()
     fig.savefig("all_pairs.png")
+
+    if HAS_TIKZ:
+        tikzplotlib.save("all_pairs.tex")
 
 
 def main():

@@ -1,0 +1,74 @@
+% This file was created with tikzplotlib v0.9.14.
+\begin{tikzpicture}
+
+\definecolor{color0}{rgb}{0.917647058823529,0.917647058823529,0.949019607843137}
+\definecolor{color1}{rgb}{0.298039215686275,0.447058823529412,0.690196078431373}
+\definecolor{color2}{rgb}{0.866666666666667,0.517647058823529,0.32156862745098}
+\definecolor{color3}{rgb}{0.333333333333333,0.658823529411765,0.407843137254902}
+\definecolor{color4}{rgb}{0.768627450980392,0.305882352941176,0.32156862745098}
+
+\begin{axis}[
+axis background/.style={fill=color0},
+axis line style={white},
+legend cell align={left},
+legend style={fill opacity=0.8, draw opacity=1, text opacity=1, draw=white!80!black, fill=color0},
+tick align=outside,
+title={All Pairs Shortest Path Length},
+x grid style={white},
+xlabel={Data File},
+xmajorgrids,
+xmajorticks=false,
+xmin=-0.51326, xmax=0.51326,
+xtick style={color=white!15!black},
+xtick={0},
+xticklabels={rome99.gr},
+y grid style={white},
+ylabel={Runtime (sec.)},
+ymajorgrids,
+ymajorticks=false,
+ymin=0, ymax=17.6418293809891,
+ytick style={color=white!15!black}
+]
+\draw[draw=white,fill=color1] (axis cs:-0.4666,0) rectangle (axis cs:-0.2333,0.163023328781128);
+\addlegendimage{ybar,ybar legend,draw=white,fill=color1}
+\addlegendentry{retworkx}
+
+\draw[draw=white,fill=color2] (axis cs:-0.2333,0) rectangle (axis cs:0,16.8017422676086);
+\addlegendimage{ybar,ybar legend,draw=white,fill=color2}
+\addlegendentry{NetworkX}
+
+\draw[draw=white,fill=color3] (axis cs:1.38777878078145e-17,0) rectangle (axis cs:0.2333,1.802188539505);
+\addlegendimage{ybar,ybar legend,draw=white,fill=color3}
+\addlegendentry{igraph}
+
+\draw[draw=white,fill=color4] (axis cs:0.2333,0) rectangle (axis cs:0.4666,0.891238403320312);
+\addlegendimage{ybar,ybar legend,draw=white,fill=color4}
+\addlegendentry{graph-tool}
+
+\draw (axis cs:-0.34995,0.163023328781128) ++(0pt,3pt) node[
+  scale=0.6,
+  anchor=south,
+  text=white!15!black,
+  rotate=0.0
+]{0.163023};
+\draw (axis cs:-0.11665,16.8017422676086) ++(0pt,3pt) node[
+  scale=0.6,
+  anchor=south,
+  text=white!15!black,
+  rotate=0.0
+]{16.8017};
+\draw (axis cs:0.11665,1.802188539505) ++(0pt,3pt) node[
+  scale=0.6,
+  anchor=south,
+  text=white!15!black,
+  rotate=0.0
+]{1.80219};
+\draw (axis cs:0.34995,0.891238403320312) ++(0pt,3pt) node[
+  scale=0.6,
+  anchor=south,
+  text=white!15!black,
+  rotate=0.0
+]{0.891238};
+\end{axis}
+
+\end{tikzpicture}
