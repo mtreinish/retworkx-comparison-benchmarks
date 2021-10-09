@@ -4,7 +4,9 @@ import csv
 import statistics
 
 import matplotlib.pyplot as plt
+import seaborn as sns
 import numpy as np
+
 
 
 def creation_time_graph():
@@ -51,6 +53,7 @@ def creation_time_graph():
                     )
     x = np.arange(len(single_source_shortest_files))
     width = 0.175
+    sns.set_theme()
     fig, ax = plt.subplots()
     retworkx_rects = ax.bar(x - 3 * width / 2, retworkx_times, width, label="retworkx")
     networkx_rects = ax.bar(x - width / 2, networkx_times, width, label="NetworkX")
@@ -118,6 +121,7 @@ def single_source_graph():
                     )
     x = np.arange(len(single_source_shortest_files))
     width = 0.175
+    sns.set_theme()
     fig, ax = plt.subplots()
     retworkx_rects = ax.bar(x - 3 * width / 2, retworkx_times, width, label="retworkx")
     networkx_rects = ax.bar(x - width / 2, networkx_times, width, label="NetworkX")
@@ -179,6 +183,7 @@ def single_source_graph_NY():
                     )
     x = np.arange(len(single_source_shortest_files))
     width = 0.2333
+    sns.set_theme()
     fig, ax = plt.subplots()
     retworkx_rects = ax.bar(x - 3 * width / 2, retworkx_times, width, label="retworkx")
     networkx_rects = ax.bar(x - width / 2, networkx_times, width, label="NetworkX")
@@ -238,6 +243,7 @@ def all_pair_graph():
                     )
     x = np.arange(len(all_pair_files))
     width = 0.2333
+    sns.set_theme()
     fig, ax = plt.subplots()
     retworkx_rects = ax.bar(x - 3 * width / 2, retworkx_times, width, label="retworkx")
     networkx_rects = ax.bar(x - width / 2, networkx_times, width, label="NetworkX")
