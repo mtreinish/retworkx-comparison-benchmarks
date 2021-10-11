@@ -15,7 +15,7 @@ wget http://users.diag.uniroma1.it/challenge9/data/USA-road-t/USA-road-t.USA.gr.
 wget http://users.diag.uniroma1.it/challenge9/data/USA-road-t/USA-road-t.NY.gr.gz
 popd
 popd
- Build venvs
+# Build venvs
 virtualenv retworkx_venv
 retworkx_venv/bin/pip install -U retworkx
 virtualenv networkx_venv

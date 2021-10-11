@@ -21,7 +21,7 @@ TODO
 
 The `results/` directory contains the preliminary data from running on some
 of the graphs. These were all run on the same environment with an i7-6900k with
-128GB of DDR4 3200MHz RAM running Python 3.9.3 from the Arch Linux package
+128GB of DDR4 3200MHz RAM running Python 3.9.7 from the Arch Linux package
 repository with Linux kernel 5.11.14-arch1-1.
 
 The following versions of the graph libraries being benchmarked were used:
@@ -29,7 +29,7 @@ The following versions of the graph libraries being benchmarked were used:
 - retworkx 0.10.2
 - python-igraph 0.9.6
 - networkx 2.6.3
-- graph-tool 2.43
+- graph-tool 2.43 (with boost 1.76)
 
 These were all installed from the packages available on PyPI using pip, with
 the exception of graph-tool which is not packaged on PyPI and that was compiled
