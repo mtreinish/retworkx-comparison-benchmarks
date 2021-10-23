@@ -21,17 +21,13 @@ import graphsdb_parser
 MEM_SIZE = 1.26 * 10 ** 11
 
 group_types = {
-    "rand": ["r001", "r005", "r01", "r02"],
-    "m2D": ["m2D", "m2Dr2", "m2Dr4", "m2Dr6"],
-    "m3D": ["m3D", "m3Dr2", "m3Dr4", "m3Dr6"],
-    "m4D": ["m4D", "m4Dr2", "m4Dr4", "m4Dr6"],
-    "bvg": ["b03", "b03m", "b06", "b06m", "b09", "b09m"],
+    "bvg": ["b03", "b06", "b09"],
 }
 
 
 def main():
     path = sys.argv[1]
-    subgraph_prefix = ["si2", "si4", "si6"]
+    subgraph_prefix = ["si6", "si4", "si2"]
     subgraph_iso_times = defaultdict(list)
     with open(f"graph_tool_subgraph_iso.csv", "w") as csvfile:
         csv_writer = csv.writer(csvfile)
