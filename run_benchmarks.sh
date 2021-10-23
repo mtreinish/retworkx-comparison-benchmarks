@@ -52,13 +52,13 @@ for gr_file in dimacs_9/USA-road-1.USA.gr.gz dimacs_9/distance/USA-road-d.USA.gr
 done
 echo "Isomorphism benchmarks"
 echo "Running retworkx benchmarks"
-retworkx_venv/bin/python retworkx_bench/isomorphism.py graphsdb
+retworkx_venv/bin/python retworkx_bench/isomorphism.py arg_db/graphsdb
 echo "Running NetworkX benchmarks"
-networkx_venv/bin/python networkx_bench/isomorphism.py graphsdb
+networkx_venv/bin/python networkx_bench/isomorphism.py arg_db/graphsdb
 echo "Running igraph benchmarks"
-igraph_venv/bin/python igraph_bench/isomorphism.py graphsdb
+igraph_venv/bin/python igraph_bench/isomorphism.py arg_db/graphsdb
 echo "Running graph-tool benchmarks"
-python graph_tool_bench/isomorphism.py graphsdb
+python graph_tool_bench/isomorphism.py arg_db/graphsdb
 
 # Process results
 mv *csv results/
