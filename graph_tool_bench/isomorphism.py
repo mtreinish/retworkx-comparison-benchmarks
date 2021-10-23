@@ -13,7 +13,7 @@ import statistics
 import sys
 import time
 
-import graph_tool
+import graph_tool.topology
 
 import graphsdb_parser
 
@@ -54,7 +54,7 @@ def main():
                         for i in range(5):
                             start = time.time()
                             res = graph_tool.topology.subgraph_isomorphism(
-                                *graphs, max_n=1, induced=True
+                                graphs[1], graphs[0], max_n=1, induced=True
                             )
                             stop = time.time()
                             if not res:
