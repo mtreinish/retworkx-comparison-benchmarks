@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+from collections import defaultdict
 import csv
 import statistics
 
@@ -7,6 +8,7 @@ import matplotlib.pyplot as plt
 
 try:
     import seaborn as sns
+
     HAS_SNS = True
 except ImportError:
     HAS_SNS = False
@@ -14,13 +16,13 @@ except ImportError:
 
 try:
     import tikzplotlib
+
     HAS_TIKZ = True
 except:
     HAS_TIKZ = False
     print("Skipping seaborn import (no TikZ output will be generated)")
 
 import numpy as np
-
 
 
 def creation_time_graph():
@@ -297,7 +299,90 @@ def all_pair_graph():
         tikzplotlib.save("all_pairs.tex")
 
 
+def isomorphism_graph():
+    retworkx_times = defaultdict(float)
+    networkx_times = defaultdict(float)
+    igraph_times = defaultdict(float)
+    graph_tool_times = defaultdict(float)
+    retworkx_file = "retworkx_subgraph_iso.csv"
+    with open(retworkx_file) as csvfile:
+        data_reader = csv.reader(csvfile)
+        for row in data_reader:
+            if row[0] == "Graph":
+                continue
+            file_prefix = row[0].split(".")[0]
+            retworkx_times[file_prefix] += float(row[1])
+    networkx_file = "networkx_subgraph_iso.csv"
+    with open(networkx_file) as csvfile:
+        data_reader = csv.reader(csvfile)
+        for row in data_reader:
+            if row[0] == "Graph":
+                continue
+            file_prefix = row[0].split(".")[0]
+            networkx_times[file_prefix] += float(row[1])
+    igraph_file = "igraph_subgraph_iso.csv"
+    with open(igraph_file) as csvfile:
+        data_reader = csv.reader(csvfile)
+        for row in data_reader:
+            if row[0] == "Graph":
+                continue
+            file_prefix = row[0].split(".")[0]
+            igraph_times[file_prefix] += float(row[1])
+    graph_tools_file = "graph_tool_subgraph_iso.csv"
+    with open(graph_tools_file) as csvfile:
+        data_reader = csv.reader(csvfile)
+        for row in data_reader:
+            if row[0] == "Graph":
+                continue
+            file_prefix = row[0].split(".")[0]
+            graph_tool_times[file_prefix] += float(row[1])
+    if HAS_SNS:
+        sns.set_theme()
+    fig = plt.figure(figsize=(50, 50))
+    fig.suptitle("Subgraph Isomorphsim Runtime")
+    subfigs = fig.subfigures(nrows=3, ncols=1)
+    for i, percent in enumerate(["si6", "si4", "si2"]):
+        subfig = subfigs[i]
+        subfig.suptitle(f"Subgraph is {percent[-1]}0% of graph size", fontsize=16)
+        ax = subfig.subplots(nrows=1, ncols=3)
+        for j, valence in enumerate(["b03", "b06", "b09"]):
+            indices = []
+            retworkx_data = []
+            networkx_data = []
+            igraph_data = []
+            graph_tool_data = []
+            for graph, point in sorted(
+                retworkx_times.items(), key=lambda x: int(x[0].split("_")[-1][1:])
+            ):
+                if graph.startswith("%s_%s_" % (percent, valence)):
+                    indices.append(int(graph.split("_")[-1][1:]))
+                    retworkx_data.append(point)
+                    networkx_data.append(networkx_times[graph])
+                    igraph_data.append(igraph_times[graph])
+                    graph_tool_data.append(graph_tool_times[graph])
+
+            x = np.arange(len(indices))
+            ax[j].plot(retworkx_data, label="retworkx")
+            ax[j].plot(networkx_data, label="NetworkX")
+            ax[j].plot(igraph_data, label="igraph")
+            ax[j].plot(graph_tool_data, label="graph-tool")
+            ax[j].set_ylabel("Sum of Runtime (sec.)")
+            ax[j].set_title(f"Bounded-valance graph with valence = {valence[-1]}")
+            ax[j].set_xlabel("Number of graph nodes")
+            ax[j].set_xticks(x)
+            ax[j].set_xticklabels(indices)
+            ax[j].legend()
+            ax[j].set_yscale("log")
+
+    fig.suptitle("Subgraph Isomorphism Runtime", fontsize=24)
+    fig.savefig("subgraph_isomorphism.png")
+
+    if HAS_TIKZ:
+        tikzplotlib.save("subgraph_isomorphism.tex")
+
+
 def main():
+    isomorphism_graph()
     creation_time_graph()
     single_source_graph()
     single_source_graph_NY()
