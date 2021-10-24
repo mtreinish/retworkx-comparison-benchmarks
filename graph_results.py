@@ -342,7 +342,7 @@ def isomorphism_graph():
     subfigs = fig.subfigures(nrows=3, ncols=1)
     for i, percent in enumerate(["si6", "si4", "si2"]):
         subfig = subfigs[i]
-        subfig.suptitle(f"Subgraph is {percent[-1]}0% of graph size", fontsize=15, fontweight="bold")
+        subfig.suptitle(f"Subgraph is {percent[-1]}0% of graph size", fontsize=16, fontweight="bold")
         ax = subfig.subplots(nrows=1, ncols=3)
         for j, valence in enumerate(["b03", "b06", "b09"]):
             indices = []
@@ -373,7 +373,6 @@ def isomorphism_graph():
             ax[j].legend()
             ax[j].set_yscale("log")
 
-    plt.suptitle("Subgraph Isomorphism Runtime", fontsize=24, fontweight="bold")
     fig.savefig("subgraph_isomorphism.png")
 
     if HAS_TIKZ:
