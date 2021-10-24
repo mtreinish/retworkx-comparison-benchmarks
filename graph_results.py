@@ -80,7 +80,7 @@ def creation_time_graph():
     )
 
     ax.set_ylabel("Runtime (sec.)")
-    ax.set_title("Time to create a weighted directed graph")
+    ax.set_title("Time to create a weighted directed graph", fontweight="bold")
     ax.set_xlabel("Data File")
     ax.set_xticks(x)
     ax.set_xticklabels(single_source_shortest_files)
@@ -152,7 +152,7 @@ def single_source_graph():
     )
 
     ax.set_ylabel("Runtime (sec.)")
-    ax.set_title("Single Source Shortest path between 2 nodes")
+    ax.set_title("Single Source Shortest path between 2 nodes", fontweight="bold")
     ax.set_xlabel("Data File")
     ax.set_xticks(x)
     ax.set_xticklabels(single_source_shortest_files)
@@ -218,7 +218,7 @@ def single_source_graph_NY():
     )
 
     ax.set_ylabel("Runtime (sec.)")
-    ax.set_title("Single Source Shortest path between 2 nodes")
+    ax.set_title("Single Source Shortest path between 2 nodes", fontweight="bold")
     ax.set_xlabel("Data File")
     ax.set_xticks(x)
     ax.set_xticklabels(single_source_shortest_files)
@@ -339,11 +339,10 @@ def isomorphism_graph():
     if HAS_SNS:
         sns.set_theme()
     fig = plt.figure(figsize=(25, 15))
-    fig.suptitle("Subgraph Isomorphsim Runtime")
     subfigs = fig.subfigures(nrows=3, ncols=1)
     for i, percent in enumerate(["si6", "si4", "si2"]):
         subfig = subfigs[i]
-        subfig.suptitle(f"Subgraph is {percent[-1]}0% of graph size", fontsize=16)
+        subfig.suptitle(f"Subgraph is {percent[-1]}0% of graph size", fontsize=15, fontweight="bold")
         ax = subfig.subplots(nrows=1, ncols=3)
         for j, valence in enumerate(["b03", "b06", "b09"]):
             indices = []
@@ -367,14 +366,14 @@ def isomorphism_graph():
             ax[j].plot(igraph_data, label="igraph")
             ax[j].plot(graph_tool_data, label="graph-tool")
             ax[j].set_ylabel("Sum of Runtime (sec.)")
-            ax[j].set_title(f"Bounded-valance graph with valence = {valence[-1]}")
+            ax[j].set_title(f"Bounded-valance graph with valence = {valence[-1]}", fontweight="bold", fontsize=14)
             ax[j].set_xlabel("Number of graph nodes")
             ax[j].set_xticks(x)
             ax[j].set_xticklabels(indices)
             ax[j].legend()
             ax[j].set_yscale("log")
 
-    fig.suptitle("Subgraph Isomorphism Runtime", fontsize=24)
+    plt.suptitle("Subgraph Isomorphism Runtime", fontsize=24, fontweight="bold")
     fig.savefig("subgraph_isomorphism.png")
 
     if HAS_TIKZ:
