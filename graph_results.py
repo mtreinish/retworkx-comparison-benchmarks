@@ -378,7 +378,8 @@ def isomorphism_graph():
     fig.savefig("subgraph_isomorphism.png")
 
     if HAS_TIKZ:
-        tikzplotlib.save("subgraph_isomorphism.tex")
+        pass
+        # tikzplotlib.save("subgraph_isomorphism.tex")
 
 
 def main():
