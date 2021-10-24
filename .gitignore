@@ -1,5 +1,6 @@
 dimacs_9/
 graphsdb/
+arg_db/
 *venv/
 __pycache__/
 *.py[cod]
