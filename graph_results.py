@@ -68,7 +68,7 @@ def creation_time_graph():
                         statistics.mean([float(x) for x in row[1:]])
                     )
     x = np.arange(len(single_source_shortest_files))
-    width = 0.175
+    width = 0.195
     if HAS_SNS:
         sns.set_theme()
     fig, ax = plt.subplots()
@@ -84,7 +84,7 @@ def creation_time_graph():
     ax.set_xlabel("Data File")
     ax.set_xticks(x)
     ax.set_xticklabels(single_source_shortest_files)
-    ax.legend()
+    ax.legend(loc="upper left", bbox_to_anchor=(1.01,1))
 
     ax.bar_label(retworkx_rects, padding=3)
     ax.bar_label(networkx_rects, padding=3)
@@ -156,7 +156,7 @@ def single_source_graph():
     ax.set_xlabel("Data File")
     ax.set_xticks(x)
     ax.set_xticklabels(single_source_shortest_files)
-    ax.legend()
+    ax.legend(loc="upper left", bbox_to_anchor=(0.85,0.97))
 
     ax.bar_label(retworkx_rects, padding=3)
     ax.bar_label(networkx_rects, padding=3)
@@ -222,7 +222,7 @@ def single_source_graph_NY():
     ax.set_xlabel("Data File")
     ax.set_xticks(x)
     ax.set_xticklabels(single_source_shortest_files)
-    ax.legend()
+    ax.legend(loc="upper left")
 
     ax.bar_label(retworkx_rects, padding=3)
     ax.bar_label(networkx_rects, padding=3)
@@ -338,7 +338,7 @@ def isomorphism_graph():
             graph_tool_times[file_prefix] += float(row[1])
     if HAS_SNS:
         sns.set_theme()
-    fig = plt.figure(figsize=(50, 50))
+    fig = plt.figure(figsize=(25, 15))
     fig.suptitle("Subgraph Isomorphsim Runtime")
     subfigs = fig.subfigures(nrows=3, ncols=1)
     for i, percent in enumerate(["si6", "si4", "si2"]):

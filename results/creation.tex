@@ -11,14 +11,22 @@
 axis background/.style={fill=color0},
 axis line style={white},
 legend cell align={left},
-legend style={fill opacity=0.8, draw opacity=1, text opacity=1, draw=white!80!black, fill=color0},
+legend style={
+  fill opacity=0.8,
+  draw opacity=1,
+  text opacity=1,
+  at={(1.01,1)},
+  anchor=north west,
+  draw=white!80!black,
+  fill=color0
+},
 tick align=outside,
 title={Time to create a weighted directed graph},
 x grid style={white},
 xlabel={Data File},
 xmajorgrids,
 xmajorticks=false,
-xmin=-0.485, xmax=2.485,
+xmin=-0.529, xmax=2.529,
 xtick style={color=white!15!black},
 xtick={0,1,2},
 xticklabels={USA-road-1.USA,USA-road-d.USA,USA-road-t.USA},
@@ -29,97 +37,97 @@ ymajorticks=false,
 ymin=0, ymax=393.822401390076,
 ytick style={color=white!15!black}
 ]
-\draw[draw=white,fill=color1] (axis cs:-0.35,0) rectangle (axis cs:-0.175,63.980140209198);
+\draw[draw=white,fill=color1] (axis cs:-0.39,0) rectangle (axis cs:-0.195,63.980140209198);
 \addlegendimage{ybar,ybar legend,draw=white,fill=color1}
 \addlegendentry{retworkx}
 
-\draw[draw=white,fill=color1] (axis cs:0.65,0) rectangle (axis cs:0.825,69.4797526359558);
-\draw[draw=white,fill=color1] (axis cs:1.65,0) rectangle (axis cs:1.825,67.4883755207062);
-\draw[draw=white,fill=color2] (axis cs:-0.175,0) rectangle (axis cs:0,207.78788523674);
+\draw[draw=white,fill=color1] (axis cs:0.61,0) rectangle (axis cs:0.805,69.4797526359558);
+\draw[draw=white,fill=color1] (axis cs:1.61,0) rectangle (axis cs:1.805,67.4883755207062);
+\draw[draw=white,fill=color2] (axis cs:-0.195,0) rectangle (axis cs:0,207.78788523674);
 \addlegendimage{ybar,ybar legend,draw=white,fill=color2}
 \addlegendentry{NetworkX}
 
-\draw[draw=white,fill=color2] (axis cs:0.825,0) rectangle (axis cs:1,208.730363130569);
-\draw[draw=white,fill=color2] (axis cs:1.825,0) rectangle (axis cs:2,208.569315099716);
-\draw[draw=white,fill=color3] (axis cs:1.38777878078145e-17,0) rectangle (axis cs:0.175,348.485842704773);
+\draw[draw=white,fill=color2] (axis cs:0.805,0) rectangle (axis cs:1,208.730363130569);
+\draw[draw=white,fill=color2] (axis cs:1.805,0) rectangle (axis cs:2,208.569315099716);
+\draw[draw=white,fill=color3] (axis cs:1.38777878078145e-17,0) rectangle (axis cs:0.195,348.485842704773);
 \addlegendimage{ybar,ybar legend,draw=white,fill=color3}
 \addlegendentry{igraph}
 
-\draw[draw=white,fill=color3] (axis cs:1,0) rectangle (axis cs:1.175,353.38560333252);
-\draw[draw=white,fill=color3] (axis cs:2,0) rectangle (axis cs:2.175,355.224029111862);
-\draw[draw=white,fill=color4] (axis cs:0.175,0) rectangle (axis cs:0.35,366.045658969879);
+\draw[draw=white,fill=color3] (axis cs:1,0) rectangle (axis cs:1.195,353.38560333252);
+\draw[draw=white,fill=color3] (axis cs:2,0) rectangle (axis cs:2.195,355.224029111862);
+\draw[draw=white,fill=color4] (axis cs:0.195,0) rectangle (axis cs:0.39,366.045658969879);
 \addlegendimage{ybar,ybar legend,draw=white,fill=color4}
 \addlegendentry{graph-tool}
 
-\draw[draw=white,fill=color4] (axis cs:1.175,0) rectangle (axis cs:1.35,375.068953704834);
-\draw[draw=white,fill=color4] (axis cs:2.175,0) rectangle (axis cs:2.35,363.073728466034);
-\draw (axis cs:-0.2625,63.980140209198) ++(0pt,3pt) node[
+\draw[draw=white,fill=color4] (axis cs:1.195,0) rectangle (axis cs:1.39,375.068953704834);
+\draw[draw=white,fill=color4] (axis cs:2.195,0) rectangle (axis cs:2.39,363.073728466034);
+\draw (axis cs:-0.2925,63.980140209198) ++(0pt,3pt) node[
   scale=0.6,
   anchor=south,
   text=white!15!black,
   rotate=0.0
 ]{63.9801};
-\draw (axis cs:0.7375,69.4797526359558) ++(0pt,3pt) node[
+\draw (axis cs:0.7075,69.4797526359558) ++(0pt,3pt) node[
   scale=0.6,
   anchor=south,
   text=white!15!black,
   rotate=0.0
 ]{69.4798};
-\draw (axis cs:1.7375,67.4883755207062) ++(0pt,3pt) node[
+\draw (axis cs:1.7075,67.4883755207062) ++(0pt,3pt) node[
   scale=0.6,
   anchor=south,
   text=white!15!black,
   rotate=0.0
 ]{67.4884};
-\draw (axis cs:-0.0875,207.78788523674) ++(0pt,3pt) node[
+\draw (axis cs:-0.0975,207.78788523674) ++(0pt,3pt) node[
   scale=0.6,
   anchor=south,
   text=white!15!black,
   rotate=0.0
 ]{207.788};
-\draw (axis cs:0.9125,208.730363130569) ++(0pt,3pt) node[
+\draw (axis cs:0.9025,208.730363130569) ++(0pt,3pt) node[
   scale=0.6,
   anchor=south,
   text=white!15!black,
   rotate=0.0
 ]{208.73};
-\draw (axis cs:1.9125,208.569315099716) ++(0pt,3pt) node[
+\draw (axis cs:1.9025,208.569315099716) ++(0pt,3pt) node[
   scale=0.6,
   anchor=south,
   text=white!15!black,
   rotate=0.0
 ]{208.569};
-\draw (axis cs:0.0875,348.485842704773) ++(0pt,3pt) node[
+\draw (axis cs:0.0975,348.485842704773) ++(0pt,3pt) node[
   scale=0.6,
   anchor=south,
   text=white!15!black,
   rotate=0.0
 ]{348.486};
-\draw (axis cs:1.0875,353.38560333252) ++(0pt,3pt) node[
+\draw (axis cs:1.0975,353.38560333252) ++(0pt,3pt) node[
   scale=0.6,
   anchor=south,
   text=white!15!black,
   rotate=0.0
 ]{353.386};
-\draw (axis cs:2.0875,355.224029111862) ++(0pt,3pt) node[
+\draw (axis cs:2.0975,355.224029111862) ++(0pt,3pt) node[
   scale=0.6,
   anchor=south,
   text=white!15!black,
   rotate=0.0
 ]{355.224};
-\draw (axis cs:0.2625,366.045658969879) ++(0pt,3pt) node[
+\draw (axis cs:0.2925,366.045658969879) ++(0pt,3pt) node[
   scale=0.6,
   anchor=south,
   text=white!15!black,
   rotate=0.0
 ]{366.046};
-\draw (axis cs:1.2625,375.068953704834) ++(0pt,3pt) node[
+\draw (axis cs:1.2925,375.068953704834) ++(0pt,3pt) node[
   scale=0.6,
   anchor=south,
   text=white!15!black,
   rotate=0.0
 ]{375.069};
-\draw (axis cs:2.2625,363.073728466034) ++(0pt,3pt) node[
+\draw (axis cs:2.2925,363.073728466034) ++(0pt,3pt) node[
   scale=0.6,
   anchor=south,
   text=white!15!black,
