@@ -282,7 +282,7 @@ def all_pair_graph():
     )
 
     ax.set_ylabel("Runtime (sec.)")
-    ax.set_title("All Pairs Shortest Path Length")
+    ax.set_title("All Pairs Shortest Path Length", fontweight="bold")
     ax.set_xlabel("Data File")
     ax.set_xticks(x)
     ax.set_xticklabels(all_pair_files)
