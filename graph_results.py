@@ -71,7 +71,7 @@ def creation_time_graph():
     width = 0.195
     if HAS_SNS:
         sns.set_theme()
-    fig, ax = plt.subplots()
+    fig, ax = plt.subplots(figsize=(12.8, 4.8))
     retworkx_rects = ax.bar(x - 3 * width / 2, retworkx_times, width, label="retworkx")
     networkx_rects = ax.bar(x - width / 2, networkx_times, width, label="NetworkX")
     igraph_rects = ax.bar(x + width / 2, igraph_times, width, label="igraph")
@@ -143,7 +143,7 @@ def single_source_graph():
     width = 0.175
     if HAS_SNS:
         sns.set_theme()
-    fig, ax = plt.subplots()
+    fig, ax = plt.subplots(figsize=(9.6, 4.8))
     retworkx_rects = ax.bar(x - 3 * width / 2, retworkx_times, width, label="retworkx")
     networkx_rects = ax.bar(x - width / 2, networkx_times, width, label="NetworkX")
     igraph_rects = ax.bar(x + width / 2, igraph_times, width, label="igraph")
@@ -373,7 +373,7 @@ def isomorphism_graph():
             ax[j].legend()
             ax[j].set_yscale("log")
 
-    fig.savefig("subgraph_isomorphism.png")
+    fig.savefig("subgraph_isomorphism.png", dpi=200)
 
     if HAS_TIKZ:
         pass
