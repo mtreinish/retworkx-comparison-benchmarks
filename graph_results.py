@@ -143,7 +143,7 @@ def single_source_graph():
     width = 0.175
     if HAS_SNS:
         sns.set_theme()
-    fig, ax = plt.subplots(figsize=(9.6, 4.8))
+    fig, ax = plt.subplots(figsize=(7, 4.8))
     retworkx_rects = ax.bar(x - 3 * width / 2, retworkx_times, width, label="retworkx")
     networkx_rects = ax.bar(x - width / 2, networkx_times, width, label="NetworkX")
     igraph_rects = ax.bar(x + width / 2, igraph_times, width, label="igraph")
@@ -156,7 +156,8 @@ def single_source_graph():
     ax.set_xlabel("Data File")
     ax.set_xticks(x)
     ax.set_xticklabels(single_source_shortest_files)
-    ax.legend(loc="upper left", bbox_to_anchor=(0.85,0.97))
+    ax.set_xlim(right=np.amax(x)*1.45)
+    ax.legend()
 
     ax.bar_label(retworkx_rects, padding=3)
     ax.bar_label(networkx_rects, padding=3)
@@ -273,7 +274,7 @@ def all_pair_graph():
     width = 0.2333
     if HAS_SNS:
         sns.set_theme()
-    fig, ax = plt.subplots()
+    fig, ax = plt.subplots(figsize=(7, 4.8))
     retworkx_rects = ax.bar(x - 3 * width / 2, retworkx_times, width, label="retworkx")
     networkx_rects = ax.bar(x - width / 2, networkx_times, width, label="NetworkX")
     igraph_rects = ax.bar(x + width / 2, igraph_times, width, label="igraph")
