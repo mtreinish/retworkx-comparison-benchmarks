@@ -339,7 +339,8 @@ def isomorphism_graph():
             graph_tool_times[file_prefix] += float(row[1])
     if HAS_SNS:
         sns.set_theme()
-    fig = plt.figure(figsize=(25, 15))
+        sns.set_context("notebook", font_scale=1.5, rc={"lines.linewidth": 2.5})
+    fig = plt.figure(figsize=(25, 15), constrained_layout=True)
     subfigs = fig.subfigures(nrows=3, ncols=1)
     for i, percent in enumerate(["si6", "si4", "si2"]):
         subfig = subfigs[i]
