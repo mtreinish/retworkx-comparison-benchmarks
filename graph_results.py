@@ -90,6 +90,7 @@ def creation_time_graph():
     ax.bar_label(networkx_rects, padding=3)
     ax.bar_label(igraph_rects, padding=3)
     ax.bar_label(graph_tools_rects, padding=3)
+    ax.set_ylim(top=np.amax(graph_tools_times)*1.15)
     fig.tight_layout()
     fig.savefig("creation.png")
 
@@ -157,6 +158,7 @@ def single_source_graph():
     ax.set_xticks(x)
     ax.set_xticklabels(single_source_shortest_files)
     ax.set_xlim(right=np.amax(x)*1.45)
+    ax.set_ylim(top=np.amax(networkx_times)*1.15)
     ax.legend()
 
     ax.bar_label(retworkx_rects, padding=3)
@@ -287,6 +289,7 @@ def all_pair_graph():
     ax.set_xlabel("Data File")
     ax.set_xticks(x)
     ax.set_xticklabels(all_pair_files)
+    ax.set_ylim(top=np.amax(networkx_times)*1.15)
     ax.legend()
 
     ax.bar_label(retworkx_rects, padding=3)
