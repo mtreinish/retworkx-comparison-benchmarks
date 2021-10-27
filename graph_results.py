@@ -342,13 +342,14 @@ def isomorphism_graph():
             graph_tool_times[file_prefix] += float(row[1])
     if HAS_SNS:
         sns.set_theme()
-        sns.set_context("notebook", font_scale=1.5, rc={"lines.linewidth": 2.5})
-    fig = plt.figure(figsize=(25, 15), constrained_layout=True)
-    subfigs = fig.subfigures(nrows=3, ncols=1)
+        sns.set_context("notebook", font_scale=2, rc={"lines.linewidth": 2.5})
+    fig = plt.figure(figsize=(29, 22), constrained_layout=True)
+    subfigs = fig.subplots(nrows=3, ncols=3)
     for i, percent in enumerate(["si6", "si4", "si2"]):
         subfig = subfigs[i]
-        subfig.suptitle(f"Subgraph is {percent[-1]}0% of graph size", fontsize=21, fontweight="bold")
-        ax = subfig.subplots(nrows=1, ncols=3)
+        # subfig.suptitle(f"Subgraph is {percent[-1]}0% of graph size", fontsize=21, fontweight="bold")
+        # ax = subfig.subplots(nrows=1, ncols=3)
+        ax = subfigs
         for j, valence in enumerate(["b03", "b06", "b09"]):
             indices = []
             retworkx_data = []
@@ -366,17 +367,21 @@ def isomorphism_graph():
                     graph_tool_data.append(graph_tool_times[graph])
 
             x = np.arange(len(indices))
-            ax[j].plot(retworkx_data, label="retworkx")
-            ax[j].plot(networkx_data, label="NetworkX")
-            ax[j].plot(igraph_data, label="igraph")
-            ax[j].plot(graph_tool_data, label="graph-tool")
-            ax[j].set_ylabel("Sum of Runtime (sec.)")
-            ax[j].set_title(f"Bounded-valance graph with valence = {valence[-1]}", fontweight="bold", fontsize=19)
-            ax[j].set_xlabel("Number of graph nodes")
-            ax[j].set_xticks(x)
-            ax[j].set_xticklabels(indices)
-            ax[j].legend()
-            ax[j].set_yscale("log")
+            ax[i, j].plot(retworkx_data, label="retworkx")
+            ax[i, j].plot(networkx_data, label="NetworkX")
+            ax[i, j].plot(igraph_data, label="igraph")
+            ax[i, j].plot(graph_tool_data, label="graph-tool")
+            ax[i, j].set_ylabel("Sum of Runtime (sec.)")
+            ax[i, j].set_title(
+                f"Bounded-valance graph with valence = {valence[-1]} \n and subgraph size of {percent[-1]}0%", 
+                fontweight="bold", 
+                fontsize=25
+            )
+            ax[i, j].set_xlabel("Number of graph nodes")
+            ax[i, j].set_xticks(x)
+            ax[i, j].set_xticklabels(indices)
+            ax[i, j].legend()
+            ax[i, j].set_yscale("log")
 
     fig.savefig("subgraph_isomorphism.png", dpi=200)
 
