@@ -347,7 +347,7 @@ def isomorphism_graph():
     subfigs = fig.subfigures(nrows=3, ncols=1)
     for i, percent in enumerate(["si6", "si4", "si2"]):
         subfig = subfigs[i]
-        subfig.suptitle(f"Subgraph is {percent[-1]}0% of graph size", fontsize=16, fontweight="bold")
+        subfig.suptitle(f"Subgraph is {percent[-1]}0% of graph size", fontsize=21, fontweight="bold")
         ax = subfig.subplots(nrows=1, ncols=3)
         for j, valence in enumerate(["b03", "b06", "b09"]):
             indices = []
@@ -371,7 +371,7 @@ def isomorphism_graph():
             ax[j].plot(igraph_data, label="igraph")
             ax[j].plot(graph_tool_data, label="graph-tool")
             ax[j].set_ylabel("Sum of Runtime (sec.)")
-            ax[j].set_title(f"Bounded-valance graph with valence = {valence[-1]}", fontweight="bold", fontsize=14)
+            ax[j].set_title(f"Bounded-valance graph with valence = {valence[-1]}", fontweight="bold", fontsize=19)
             ax[j].set_xlabel("Number of graph nodes")
             ax[j].set_xticks(x)
             ax[j].set_xticklabels(indices)
