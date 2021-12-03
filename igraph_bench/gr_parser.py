@@ -30,23 +30,22 @@ def parse_gr_from_file(path, directed=True):
     :returns: A retworkx Graph or DiGraph object representing the input gr
         file
     """
-    if not directed:
-        return_graph = networkx.Graph()
-    else:
-        return_graph = networkx.DiGraph()
+    return_graph = igraph.Graph(directed=directed)
 
     nodes_added = False
     if path.endswith("gz"):
         open_call = gzip.open
     else:
         open_call = open
+    edge_list = []
+    weight_list = []
     with open_call(path, "rt") as fd:
         for line in fd:
             if line.startswith("c"):
                 continue
             if line.startswith("p"):
                 num_nodes = int(line.split(" ")[2])
-                return_graph.add_nodes_from(range(num_nodes))
+                return_graph.add_vertices(num_nodes)
                 nodes_added = True
             elif line.startswith("a"):
                 if not nodes_added:
@@ -57,9 +56,11 @@ def parse_gr_from_file(path, directed=True):
                 u = int(components[1]) - 1
                 v = int(components[2]) - 1
                 weight = float(components[3])
-                return_graph.add_edge(u, v, weight=weight)
+                edge_list.append((u, v))
+                weight_list.append(weight)
             else:
                 raise Exception(
                     "Invalid gr file line: '%s' doesn't start with a valid " "token"
                 )
-    return igraph.Graph.from_networkx(return_graph)
+    return_graph.add_edges(edge_list, {"weight": weight_list})
+    return return_graph
